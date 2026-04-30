@@ -7,6 +7,172 @@
  */
 
 // ----------------------------------------------------------------------------
+// Round 0 — basics (9th-grade level)
+// ----------------------------------------------------------------------------
+const ROUND_0_QUESTIONS = [
+  {
+    id: "q0_what_is_crispr",
+    title: "Question 1 of 5 — What CRISPR does",
+    stem:
+      "CRISPR is a tool scientists use on DNA. Which of these best describes what it actually does?",
+    choices: [
+      {
+        text: "It scans for a specific stretch of DNA letters and cuts the DNA at that exact spot.",
+        correct: true,
+        why:
+          "Yes. You hand CRISPR a short \"target sequence\" — usually about 20 letters of DNA — and the tool finds that match in the genome and snips the DNA there. What happens after the cut depends on how the cell repairs it.",
+      },
+      {
+        text: "It rewrites whole sections of DNA the way you'd retype a paragraph in a Word doc.",
+        correct: false,
+        why:
+          "Not quite. CRISPR's main job is to make a cut at a chosen spot. \"Rewriting\" is something the cell does as it patches the cut — sometimes precisely, sometimes messily.",
+      },
+      {
+        text: "It deletes whole genes in one step and replaces them with synthetic ones.",
+        correct: false,
+        why:
+          "Too sweeping. CRISPR cuts. The downstream repair (and any template you provide) determines whether you delete a few letters, fix one letter, or insert something new.",
+      },
+      {
+        text: "It scans every cell in the body simultaneously and edits all of them at once.",
+        correct: false,
+        why:
+          "No. CRISPR has to be delivered into cells, and not every cell will get edited. \"Mosaicism\" — different cells with different edits — is one of the real-world challenges.",
+      },
+    ],
+  },
+  {
+    id: "q0_gene_to_protein",
+    title: "Question 2 of 5 — Genes and proteins",
+    stem:
+      "Why does changing even one letter in a gene sometimes make a big difference for a person's health?",
+    choices: [
+      {
+        text: "Because every gene carries instructions to build a specific protein, and proteins do almost all the work in our cells. Change a letter, and the protein can come out wrong.",
+        correct: true,
+        why:
+          "Right. Sickle cell disease is a famous example: one DNA letter changes, the protein (hemoglobin) folds the wrong way, and red blood cells can't carry oxygen properly.",
+      },
+      {
+        text: "Because DNA controls your thoughts directly, so a single change scrambles your brain.",
+        correct: false,
+        why:
+          "Not how it works. DNA codes for proteins, not for thoughts. The brain's behavior depends on lots of proteins (and on environment), not directly on the DNA letters.",
+      },
+      {
+        text: "Because every cell needs to memorize all 3 billion letters in order, and one missing letter makes the whole sequence unreadable.",
+        correct: false,
+        why:
+          "Cells don't \"memorize\" DNA — they read each gene only as needed. Most single-letter changes go unnoticed; problems arise when the change happens to land in a gene that matters and changes how its protein works.",
+      },
+      {
+        text: "Because all DNA letters mean the same thing, so swapping one for another always causes disease.",
+        correct: false,
+        why:
+          "Most single-letter changes don't cause any noticeable problem at all. The question is whether a change happens in a part of a gene that affects the protein's job.",
+      },
+    ],
+  },
+  {
+    id: "q0_after_the_cut",
+    title: "Question 3 of 5 — After the cut",
+    stem:
+      "When CRISPR makes its cut in a gene, the cell immediately tries to fix the break. Most of the time, the repair is fast but a little sloppy — the cell adds or loses a few letters in the process. What does that usually do to the gene?",
+    choices: [
+      {
+        text: "It scrambles the gene's instructions enough that the protein no longer gets built correctly — basically turning the gene off.",
+        correct: true,
+        why:
+          "Yes. That sloppy repair (called NHEJ) is actually how scientists \"knock out\" a gene on purpose. If you want to disable a gene, the messy fix is a feature, not a bug.",
+      },
+      {
+        text: "It heals the gene perfectly back to its original sequence every time.",
+        correct: false,
+        why:
+          "Sometimes that happens, but the more common outcome is that the patched-up gene has a few extra or missing letters, which usually breaks the gene's function.",
+      },
+      {
+        text: "It immediately destroys the entire chromosome the gene was on.",
+        correct: false,
+        why:
+          "No. Cells are good at repairing single breaks; they don't throw away whole chromosomes over one cut.",
+      },
+      {
+        text: "It causes the cell to instantly die.",
+        correct: false,
+        why:
+          "Cells handle DNA breaks all the time, including from sunlight and normal metabolism. A single CRISPR cut almost always gets repaired and the cell keeps going.",
+      },
+    ],
+  },
+  {
+    id: "q0_why_it_matters",
+    title: "Question 4 of 5 — Why CRISPR matters",
+    stem:
+      "Before CRISPR, scientists could already change DNA in some ways — but it was slow, expensive, imprecise, and limited to specific organisms. What's the single biggest reason CRISPR became such a huge deal in the 2010s?",
+    choices: [
+      {
+        text: "It made gene editing fast, cheap, and precise enough that almost any lab — including high school and college labs — could try it on almost any organism, including humans.",
+        correct: true,
+        why:
+          "Yes. CRISPR didn't invent gene editing — it democratized it. A technique that used to take a team of PhDs and a year of work could suddenly be done by a small lab in a few weeks. That's also why the ethical questions got urgent so fast: the technology became accessible before society had figured out the rules.",
+      },
+      {
+        text: "It was the first technology that could see DNA at all. Before CRISPR, no one knew what DNA looked like.",
+        correct: false,
+        why:
+          "Not even close. Watson, Crick, and Franklin worked out DNA's structure in 1953. The Human Genome Project sequenced all 3 billion letters of human DNA by 2003 — a decade before CRISPR took off.",
+      },
+      {
+        text: "It guarantees a successful, perfect edit every single time, with zero side effects.",
+        correct: false,
+        why:
+          "Not at all. CRISPR has off-target effects, mosaicism, and unpredictable repair outcomes. Its appeal is speed, cost, and accessibility — not perfection.",
+      },
+      {
+        text: "It can change DNA in a person's parents retroactively, healing inherited diseases backward through time.",
+        correct: false,
+        why:
+          "DNA editing only affects cells that exist now and forward. CRISPR can edit an embryo, a sperm, or an adult's cells — but it can't reach back through time.",
+      },
+    ],
+  },
+  {
+    id: "q0_germline_vs_somatic",
+    title: "Question 5 of 5 — One edit, or every descendant",
+    stem:
+      "Doctors are already using CRISPR to treat people with sickle cell disease by editing the patient's own bone marrow cells. Scientists could ALSO use CRISPR to edit a human embryo at conception, before the baby is even born. What's the most important difference between those two uses?",
+    choices: [
+      {
+        text: "Editing an embryo affects every cell of the resulting person — AND every child, grandchild, and descendant they ever have. Editing an adult patient's bone marrow only affects that one patient.",
+        correct: true,
+        why:
+          "Right. Edits to body cells (somatic) end with the patient — they don't get passed down. Edits to embryos, eggs, or sperm (germline) become heritable: every descendant carries the change, forever, without anyone ever consenting to it. That permanence is the heart of the ethical debate.",
+      },
+      {
+        text: "Editing an embryo is illegal everywhere in the world; editing an adult is legal everywhere.",
+        correct: false,
+        why:
+          "Laws vary by country. Most countries restrict or ban germline (embryo) editing for now — but it has been done (the He Jiankui case in 2018), and somatic gene therapies are FDA-approved for some diseases. The bigger question isn't legality alone, it's why one feels different from the other.",
+      },
+      {
+        text: "Editing an embryo is risk-free; editing an adult is dangerous.",
+        correct: false,
+        why:
+          "It's the opposite, if anything. Adult somatic edits affect one person who can monitor their own outcomes. Embryo edits affect a developing person and all their descendants — and any mistake propagates indefinitely. \"Risk-free\" is not the right word for either, but embryo editing carries a much heavier burden.",
+      },
+      {
+        text: "There is no difference — DNA is DNA, so editing any cell is morally and biologically the same.",
+        correct: false,
+        why:
+          "Biologically, the difference is huge. A change in an adult's bone marrow stays with that adult. A change in an embryo's DNA is inherited by every cell of that person AND by every future generation in their family line. The ethical weight is correspondingly different.",
+      },
+    ],
+  },
+];
+
+// ----------------------------------------------------------------------------
 // Round 1 — questions
 // ----------------------------------------------------------------------------
 const ROUND_1_QUESTIONS = [
@@ -228,6 +394,7 @@ const TRAITS = [
 
 const STATE = {
   scene: "intro",
+  round0: { index: 0, answers: [] },
   round1: { index: 0, answers: [] },
   round2: { budget: 6, selected: new Set(), results: null },
 };
@@ -247,13 +414,15 @@ function setScene(name) {
 function updateProgress() {
   const phaseMap = {
     intro: "intro",
+    round0: "round0",
+    round0_done: "round0",
     round1: "round1",
     round1_done: "round1",
     round2: "round2",
     round2_results: "round2",
     end: "end",
   };
-  const order = ["intro", "round1", "round2", "end"];
+  const order = ["intro", "round0", "round1", "round2", "end"];
   const phase = phaseMap[STATE.scene] || "intro";
   const idx = order.indexOf(phase);
   document.querySelectorAll("#progress-nav .progress__step").forEach((el) => {
@@ -266,6 +435,8 @@ function updateProgress() {
 function render() {
   $app.innerHTML = "";
   if (STATE.scene === "intro") return renderIntro();
+  if (STATE.scene === "round0") return renderRound0();
+  if (STATE.scene === "round0_done") return renderRound0Done();
   if (STATE.scene === "round1") return renderRound1();
   if (STATE.scene === "round1_done") return renderRound1Done();
   if (STATE.scene === "round2") return renderRound2();
@@ -281,13 +452,13 @@ function renderIntro() {
   card.className = "card";
   card.innerHTML = `
     <span class="card__eyebrow">How this works</span>
-    <h2>Two rounds. About <em>twenty minutes</em>.</h2>
-    <p class="card__lede">You'll start by proving you understand the mechanism. Then we'll hand you the technology and watch what you do with it.</p>
+    <h2>Three rounds. About <em>twenty minutes</em>.</h2>
+    <p class="card__lede">You'll start with the basics, then choose whether to take it to the college level, then design a child.</p>
 
     <ol class="intro-list">
-      <li><span class="num">01</span><div><strong>Round 1 — Mechanism.</strong> Three scenario questions on how CRISPR/Cas9 actually finds and edits a target. College-level. Work with a neighbor.</div></li>
+      <li><span class="num">00</span><div><strong>Round 0 — Basics.</strong> Five questions on what CRISPR actually does and why it matters. You need 5/5 to move on — but you can retry as many times as you want.</div></li>
+      <li><span class="num">01</span><div><strong>Round 1 — College-level challenge (optional).</strong> Three harder scenario questions in real lab vocabulary. Try them if you want a stretch — or skip straight to Round 2.</div></li>
       <li><span class="num">02</span><div><strong>Round 2 — Design a Child.</strong> You're a prospective parent. Pick traits to edit within a budget. See what really happens — including the things you didn't ask for.</div></li>
-      <li><span class="num">03</span><div><strong>Reflect.</strong> Bring your reactions to your group for the ethics discussion on the handout.</div></li>
     </ol>
 
     <div class="callout">
@@ -295,40 +466,31 @@ function renderIntro() {
     </div>
 
     <div class="btn-row">
-      <button class="btn btn--primary" id="start-r1">Begin Round 1 →</button>
+      <button class="btn btn--primary" id="start-r0">Begin Round 0 →</button>
     </div>
   `;
   $app.appendChild(card);
-  document.getElementById("start-r1").onclick = () => {
-    STATE.round1.index = 0;
-    STATE.round1.answers = [];
-    setScene("round1");
+  document.getElementById("start-r0").onclick = () => {
+    STATE.round0.index = 0;
+    STATE.round0.answers = [];
+    setScene("round0");
   };
 }
 
 // ----------------------------------------------------------------------------
-// Round 1
+// Round 0 (basics — 5 questions, must hit 5/5 to advance)
 // ----------------------------------------------------------------------------
-function renderRound1() {
-  const i = STATE.round1.index;
-  const q = ROUND_1_QUESTIONS[i];
+function renderRound0() {
+  const i = STATE.round0.index;
+  const q = ROUND_0_QUESTIONS[i];
   const cleanTitle = q.title.replace(/^Question\s+\d+\s+of\s+\d+\s+—\s+/i, "");
 
   const card = document.createElement("section");
   card.className = "card";
   card.innerHTML = `
-    <div class="question__counter">Round 1  ·  Question ${i + 1} of ${ROUND_1_QUESTIONS.length}</div>
+    <div class="question__counter">Round 0  ·  Basics  ·  Question ${i + 1} of ${ROUND_0_QUESTIONS.length}</div>
     <h2>${cleanTitle}</h2>
-    <div class="question__stem">
-      ${q.stem}
-      ${q.note ? `<div class="question__note">${q.note}</div>` : ""}
-    </div>
-    ${q.plain ? `
-      <details class="plain-toggle" open>
-        <summary><span class="plain-toggle__icon">★</span> In plain English <span class="plain-toggle__hint">(click to hide)</span></summary>
-        <div class="plain-toggle__body">${q.plain}</div>
-      </details>
-    ` : ""}
+    <div class="question__stem">${q.stem}</div>
     <div class="choices" id="choices"></div>
     <div id="feedback-slot"></div>
     <div class="btn-row" id="actions"></div>
@@ -344,6 +506,172 @@ function renderRound1() {
       <span class="choice__letter">${letters[idx]}</span>
       <span class="choice__text">${choice.text}</span>
     `;
+    btn.onclick = () => handleR0Answer(idx, btn);
+    $choices.appendChild(btn);
+  });
+}
+
+function handleR0Answer(choiceIdx, btn) {
+  const i = STATE.round0.index;
+  const q = ROUND_0_QUESTIONS[i];
+  const choice = q.choices[choiceIdx];
+
+  document.querySelectorAll(".choice").forEach((b, idx) => {
+    b.disabled = true;
+    if (q.choices[idx].correct) b.classList.add("is-correct");
+    if (idx === choiceIdx && !choice.correct) b.classList.add("is-incorrect");
+  });
+
+  STATE.round0.answers.push({
+    qid: q.id,
+    choiceIndex: choiceIdx,
+    correct: choice.correct,
+  });
+
+  const $feedback = document.getElementById("feedback-slot");
+  const fb = document.createElement("div");
+  fb.className = "feedback" + (choice.correct ? "" : " is-bad");
+  fb.innerHTML = `
+    <div class="feedback__title">${choice.correct ? "Correct." : "Not quite."}</div>
+    <p>${choice.why}</p>
+  `;
+  $feedback.appendChild(fb);
+
+  const $actions = document.getElementById("actions");
+  const next = document.createElement("button");
+  next.className = "btn btn--primary";
+  next.textContent =
+    i + 1 < ROUND_0_QUESTIONS.length ? "Next question →" : "Finish Round 0 →";
+  next.onclick = () => {
+    if (i + 1 < ROUND_0_QUESTIONS.length) {
+      STATE.round0.index = i + 1;
+      render();
+    } else {
+      setScene("round0_done");
+    }
+  };
+  $actions.appendChild(next);
+}
+
+function renderRound0Done() {
+  const correct = STATE.round0.answers.filter((a) => a.correct).length;
+  const total = ROUND_0_QUESTIONS.length;
+  const passed = correct === total;
+
+  const card = document.createElement("section");
+  card.className = "card";
+
+  if (passed) {
+    card.innerHTML = `
+      <span class="card__eyebrow">Round 0 complete</span>
+      <h2>Perfect — <em>${correct}/${total}</em>. You've got the basics.</h2>
+
+      <div class="score-banner">
+        <div class="score-banner__num">${correct}/${total}</div>
+        <div class="score-banner__lbl">You can describe what CRISPR does, why a single DNA letter can matter, what happens after the cut, why CRISPR was a breakthrough, and the difference between editing an adult and editing an embryo. That's enough to engage with the rest of the lesson.</div>
+      </div>
+
+      <p>From here you have a choice:</p>
+
+      <div class="callout" style="margin:16px 0;">
+        <strong style="color:var(--brand);">Round 1 is the college-level challenge.</strong> Three questions in real lab vocabulary — PAM sequences, repair pathways, off-target effects. We'll show a plain-English translation under each, but the technical version is intentionally hard. Try it if you want a stretch.
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn--primary" id="to-r1">Take it to the college level →</button>
+        <button class="btn btn--ghost" id="skip-to-r2">Skip the challenge — go to Round 2</button>
+      </div>
+    `;
+  } else {
+    // Failed — show which questions to revisit and force a retry
+    const wrong = STATE.round0.answers
+      .map((a, idx) => ({ ...a, idx }))
+      .filter((a) => !a.correct);
+    const wrongList = wrong
+      .map((w) => `<li>Question ${w.idx + 1}: <strong>${ROUND_0_QUESTIONS[w.idx].title.replace(/^Question\s+\d+\s+of\s+\d+\s+—\s+/i, "")}</strong></li>`)
+      .join("");
+
+    card.innerHTML = `
+      <span class="card__eyebrow" style="color:var(--hot);">Round 0 — keep going</span>
+      <h2>You got <em>${correct}/${total}</em>. Almost there.</h2>
+
+      <div class="score-banner">
+        <div class="score-banner__num" style="color:var(--hot);">${correct}/${total}</div>
+        <div class="score-banner__lbl">Round 0 has to be perfect before you can move on. The questions you missed will help you nail the basics — re-read each explanation carefully, then try again.</div>
+      </div>
+
+      <p style="margin-top:8px;"><strong style="color:var(--ink);">Questions to revisit:</strong></p>
+      <ul style="margin:8px 0 16px;padding-left:20px;line-height:1.7;color:var(--ink-muted);">
+        ${wrongList}
+      </ul>
+
+      <div class="callout" style="margin:16px 0;">
+        Don't worry about the score — you can retake Round 0 as many times as you need. Mastering the basics is the point.
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn--primary" id="retry-r0">Retake Round 0 →</button>
+      </div>
+    `;
+  }
+  $app.appendChild(card);
+
+  const toR1 = document.getElementById("to-r1");
+  if (toR1) toR1.onclick = () => {
+    STATE.round1.index = 0;
+    STATE.round1.answers = [];
+    setScene("round1");
+  };
+
+  const skipToR2 = document.getElementById("skip-to-r2");
+  if (skipToR2) skipToR2.onclick = () => setScene("round2");
+
+  const retry = document.getElementById("retry-r0");
+  if (retry) retry.onclick = () => {
+    STATE.round0.index = 0;
+    STATE.round0.answers = [];
+    setScene("round0");
+  };
+}
+
+// ----------------------------------------------------------------------------
+// Round 1 — college-level challenge
+// ----------------------------------------------------------------------------
+function renderRound1() {
+  const i = STATE.round1.index;
+  const q = ROUND_1_QUESTIONS[i];
+  const cleanTitle = q.title.replace(/^Question\s+\d+\s+of\s+\d+\s+—\s+/i, "");
+
+  const card = document.createElement("section");
+  card.className = "card";
+  card.innerHTML = `
+    <div class="question__counter">Round 1  ·  College-level challenge  ·  Question ${i + 1} of ${ROUND_1_QUESTIONS.length}</div>
+    <h2>${cleanTitle}</h2>
+    <div class="question__stem">
+      ${q.stem}
+      ${q.note ? `<div class="question__note">${q.note}</div>` : ""}
+    </div>
+    ${q.plain ? `
+      <details class="plain-toggle" open>
+        <summary><span class="plain-toggle__icon">★</span> In plain English <span class="plain-toggle__hint">(click to hide)</span></summary>
+        <div class="plain-toggle__body">${q.plain}</div>
+      </details>
+    ` : ""}
+    <div class="choices" id="choices"></div>
+    <div id="feedback-slot"></div>
+    <div class="btn-row" id="actions"></div>
+  ` ;
+  $app.appendChild(card);
+
+  const letters = ["A", "B", "C", "D", "E"];
+  const $choices = card.querySelector("#choices");
+  q.choices.forEach((choice, idx) => {
+    const btn = document.createElement("button");
+    btn.className = "choice";
+    btn.innerHTML = `
+      <span class="choice__letter">${letters[idx]}</span>
+      <span class="choice__text">${choice.text}</span>
+    ` ;
     btn.onclick = () => handleR1Answer(idx, btn);
     $choices.appendChild(btn);
   });
@@ -372,14 +700,14 @@ function handleR1Answer(choiceIdx, btn) {
   fb.innerHTML = `
     <div class="feedback__title">${choice.correct ? "Correct." : "Not quite."}</div>
     <p>${choice.why}</p>
-  `;
+  ` ;
   $feedback.appendChild(fb);
 
   const $actions = document.getElementById("actions");
   const next = document.createElement("button");
   next.className = "btn btn--primary";
   next.textContent =
-    i + 1 < ROUND_1_QUESTIONS.length ? "Next question →" : "Finish Round 1 →";
+    i + 1 < ROUND_1_QUESTIONS.length ? "Next question →" : "Finish challenge →";
   next.onclick = () => {
     if (i + 1 < ROUND_1_QUESTIONS.length) {
       STATE.round1.index = i + 1;
@@ -397,15 +725,15 @@ function renderRound1Done() {
   const card = document.createElement("section");
   card.className = "card";
   card.innerHTML = `
-    <span class="card__eyebrow">Round 1 complete</span>
-    <h2>You got <em>${correct}</em> of ${total}.</h2>
+    <span class="card__eyebrow">Challenge complete</span>
+    <h2>You got <em>${correct}</em> of ${total} on the college-level challenge.</h2>
 
     <div class="score-banner">
       <div class="score-banner__num">${correct}/${total}</div>
-      <div class="score-banner__lbl">Mechanism scenarios answered correctly. The point isn't the score — it's that you now know how the cut actually happens.</div>
+      <div class="score-banner__lbl">The point of the challenge wasn't a perfect score — it was to show you the kind of detail real CRISPR scientists work in every day. Off-target rates, repair pathway choice, PAM sequences: this is the actual work.</div>
     </div>
 
-    <p>With that mechanism in mind, the technology is in your hands. Round 2 asks <em>what you'd do with it</em>.</p>
+    <p>With that in mind, the technology is in your hands. Round 2 asks <em>what you'd do with it</em>.</p>
 
     <div class="callout">
       You're a prospective parent. Your embryo can be edited. You have a budget of edits to spend. Choose carefully — and read what actually happened.
@@ -414,13 +742,13 @@ function renderRound1Done() {
     <div class="btn-row">
       <button class="btn btn--primary" id="start-r2">Begin Round 2 →</button>
     </div>
-  `;
+  ` ;
   $app.appendChild(card);
   document.getElementById("start-r2").onclick = () => setScene("round2");
 }
 
 // ----------------------------------------------------------------------------
-// Round 2 — selection
+// Round 2 — design-your-child simulator
 // ----------------------------------------------------------------------------
 function renderRound2() {
   const card = document.createElement("section");
@@ -458,7 +786,7 @@ function renderRound2() {
     <div class="callout" style="margin-top:24px;">
       You don't have to spend any points. <em>"Decline all edits"</em> is a real option — and discussing why you would or wouldn't is part of the point.
     </div>
-  `;
+  ` ;
   $app.appendChild(card);
 
   const $grid = card.querySelector("#trait-grid");
@@ -475,7 +803,7 @@ function renderRound2() {
       <button class="trait__select" data-id="${t.id}">
         ${STATE.round2.selected.has(t.id) ? "Selected ✓" : "Select edit"}
       </button>
-    `;
+    ` ;
     tEl.querySelector("button").onclick = () => toggleTrait(t);
     $grid.appendChild(tEl);
   });
@@ -548,7 +876,7 @@ function renderRound2Results() {
         <button class="btn btn--primary" id="to-end">Continue to reflection →</button>
         <button class="btn btn--ghost" id="replay">Reconsider</button>
       </div>
-    `;
+    ` ;
   } else {
     const outcomeHtml = results
       .map(
@@ -588,7 +916,7 @@ function renderRound2Results() {
         <button class="btn btn--primary" id="to-end">Continue to reflection →</button>
         <button class="btn btn--ghost" id="replay">Try a different set of edits</button>
       </div>
-    `;
+    ` ;
   }
   $app.appendChild(card);
 
@@ -616,8 +944,10 @@ function labelFor(kind) {
 // End / reflection
 // ----------------------------------------------------------------------------
 function renderEnd() {
-  const correct = STATE.round1.answers.filter((a) => a.correct).length;
-  const total = ROUND_1_QUESTIONS.length;
+  const r0c = STATE.round0.answers.filter((a) => a.correct).length;
+  const r0t = ROUND_0_QUESTIONS.length;
+  const r1c = STATE.round1.answers.filter((a) => a.correct).length;
+  const r1t = ROUND_1_QUESTIONS.length;
   const card = document.createElement("section");
   card.className = "card";
   card.innerHTML = `
@@ -625,7 +955,7 @@ function renderEnd() {
     <h2>Now: turn to your group.</h2>
     <p class="card__lede">The questions on your handout aren't about whether CRISPR <em>works</em>. They're about what we should do with it. Bring the experience of the simulator with you.</p>
 
-    <p style="font-size:13px;color:var(--ink-muted);margin-top:8px;">Round 1 score: <strong style="color:var(--ink);">${correct} / ${total}</strong>.</p>
+    <p style="font-size:13px;color:var(--ink-muted);margin-top:8px;">Round 0: <strong style="color:var(--ink);">${r0c} / ${r0t}</strong>${STATE.round1.answers.length ? `   ·   Challenge: <strong style="color:var(--ink);">${r1c} / ${r1t}</strong>` : ""}</p>
 
     <div class="callout" style="margin-top:16px;">
       <strong style="color:var(--brand);">A few things to keep in mind:</strong>
@@ -640,9 +970,10 @@ function renderEnd() {
     <div class="btn-row">
       <button class="btn btn--ghost" id="restart">Restart the game</button>
     </div>
-  `;
+  ` ;
   $app.appendChild(card);
   document.getElementById("restart").onclick = () => {
+    STATE.round0 = { index: 0, answers: [] };
     STATE.round1 = { index: 0, answers: [] };
     STATE.round2 = { budget: 6, selected: new Set(), results: null };
     setScene("intro");
