@@ -952,3 +952,61 @@ footer { text-align: center; padding: var(--s-6) var(--s-5); color: var(--ink-fa
   .site-header { padding: var(--s-6) var(--s-4) var(--s-5); }
   .card { padding: var(--s-5) var(--s-4); }
 }
+
+/* =================================================================
+   Plain-English helper (Round 1) — open by default, friendly,
+   visually distinct from the rigorous stem above it.
+   ================================================================= */
+.plain-toggle {
+  margin: -8px 0 var(--s-5);
+  padding: var(--s-3) var(--s-4);
+  background: var(--accent-soft);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius-2);
+  font-size: 15px;
+  line-height: 1.6;
+}
+.plain-toggle summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  font-family: var(--font-mono);
+  font-size: var(--t-tag);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 600;
+}
+.plain-toggle summary::-webkit-details-marker { display: none; }
+.plain-toggle__icon {
+  display: inline-grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--bg-0);
+  font-size: 11px;
+}
+.plain-toggle__hint {
+  font-size: 10px;
+  color: var(--ink-muted);
+  letter-spacing: 0.08em;
+  margin-left: auto;
+  font-weight: 400;
+  text-transform: none;
+  font-family: var(--font-ui);
+}
+.plain-toggle[open] .plain-toggle__hint::before { content: "click to hide"; }
+.plain-toggle:not([open]) .plain-toggle__hint::before { content: "click to show"; }
+.plain-toggle__hint::before { content: ""; }
+
+.plain-toggle__body {
+  margin-top: var(--s-3);
+  color: var(--ink);
+  padding-left: var(--s-2);
+  border-left: 1px dashed rgba(255,255,255,0.12);
+  padding-left: var(--s-3);
+}

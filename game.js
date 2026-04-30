@@ -17,6 +17,8 @@ const ROUND_1_QUESTIONS = [
       "You want to use SpCas9 (which requires an NGG PAM, immediately 3' of the 20-nt protospacer) to disrupt a coding exon of a gene. Your collaborator hands you four candidate 23-nt sequences from the gene. Which is a viable Cas9 target?",
     note:
       "Reminder: SpCas9 cleaves ~3 bp upstream of the PAM, on the strand that contains the protospacer. The 20 nt of homology to the gRNA are 5' of the PAM.",
+    plain:
+      "We're trying to break a specific gene so it stops working. The CRISPR scissors only cut DNA when TWO things are true: (1) we hand them a 20-letter \"target sequence\" to look for, AND (2) the next 3 letters of DNA right after that target spell N-G-G (any letter, then G, then G). That \"NGG\" is like a barcode that says \"yes, you're allowed to cut here.\" Below are 4 stretches of DNA. Pick the one where the NGG barcode is in the right place — and the cut would actually break the part of the gene that matters.",
     choices: [
       {
         text: "5'-GACTTCAGGTACGTAGCCAATTC-AAA-3' (no NGG immediately 3' of the 20-mer)",
@@ -49,6 +51,8 @@ const ROUND_1_QUESTIONS = [
     title: "Question 2 of 3 — Repair pathway",
     stem:
       "You want to introduce a single defined point mutation (a precise A→G substitution) into a gene in human iPSCs. You provide a single-stranded oligo donor with ~40 bp homology arms flanking the desired change. Results: most edited alleles show indels at the cut site rather than the intended substitution. What is the most likely cause?",
+    plain:
+      "You don't want to break a gene this time — you want to make ONE precise change: swap a single letter (an A) for another letter (a G). To help the cell do it right, you also hand it a little reference strip with the correct spelling. But when you check the results, most cells didn't make the precise swap — they just patched the cut messily, like sloppy autocorrect, and added or deleted random letters. Why didn't the precise edit work?",
     choices: [
       {
         text: "The cells are repairing the double-strand break primarily by NHEJ rather than HDR.",
@@ -81,6 +85,8 @@ const ROUND_1_QUESTIONS = [
     title: "Question 3 of 3 — Specificity",
     stem:
       "Your gRNA scores well on-target in cells, but whole-genome sequencing reveals indels at three off-target sites that share 17–18 of 20 nt with your guide. A colleague suggests \"just use more Cas9 to get a cleaner edit.\" What should you actually do?",
+    plain:
+      "Your CRISPR scissors are cutting where you want them to — that's good. But when you check the rest of the genome, you find the scissors ALSO cut in a few other places: spots that look 17 or 18 letters like your target instead of all 20. These are \"off-target\" cuts — the scissors got close-enough matches and snipped them too. A friend says: \"Just dump more scissors in there, they'll figure it out.\" Is that a good idea — and if not, what should you actually do to make the cuts more specific?",
     choices: [
       {
         text: "Increase Cas9 concentration; higher activity will outcompete off-target editing.",
@@ -317,6 +323,12 @@ function renderRound1() {
       ${q.stem}
       ${q.note ? `<div class="question__note">${q.note}</div>` : ""}
     </div>
+    ${q.plain ? `
+      <details class="plain-toggle" open>
+        <summary><span class="plain-toggle__icon">★</span> In plain English <span class="plain-toggle__hint">(click to hide)</span></summary>
+        <div class="plain-toggle__body">${q.plain}</div>
+      </details>
+    ` : ""}
     <div class="choices" id="choices"></div>
     <div id="feedback-slot"></div>
     <div class="btn-row" id="actions"></div>
@@ -629,6 +641,43 @@ function renderEnd() {
       <button class="btn btn--ghost" id="restart">Restart the game</button>
     </div>
   `;
+  $app.appendChild(card);
+  document.getElementById("restart").onclick = () => {
+    STATE.round1 = { index: 0, answers: [] };
+    STATE.round2 = { budget: 6, selected: new Set(), results: null };
+    setScene("intro");
+  };
+}
+
+// ----------------------------------------------------------------------------
+// Boot
+// ----------------------------------------------------------------------------
+setScene("intro");
+orrect = STATE.round1.answers.filter((a) => a.correct).length;
+  const total = ROUND_1_QUESTIONS.length;
+  const card = document.createElement("section");
+  card.className = "card";
+  card.innerHTML = `
+    <span class="card__eyebrow">Reflect with your group</span>
+    <h2>Now: turn to your group.</h2>
+    <p class="card__lede">The questions on your handout aren't about whether CRISPR <em>works</em>. They're about what we should do with it. Bring the experience of the simulator with you.</p>
+
+    <p style="font-size:13px;color:var(--ink-muted);margin-top:8px;">Round 1 score: <strong style="color:var(--ink);">${correct} / ${total}</strong>.</p>
+
+    <div class="callout" style="margin-top:16px;">
+      <strong style="color:var(--brand);">A few things to keep in mind:</strong>
+      <ul style="margin:12px 0 0;padding-left:20px;line-height:1.6;">
+        <li>Almost every trait people most want to enhance is polygenic, environment-sensitive, or both.</li>
+        <li>Editing one gene almost never affects only one trait (pleiotropy).</li>
+        <li>Off-target effects are rare-per-site but common-per-genome.</li>
+        <li>The line between "therapy" (e.g., sickle cell) and "enhancement" (e.g., height, IQ) is not as clean as it sounds.</li>
+      </ul>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn--ghost" id="restart">Restart the game</button>
+    </div>
+  ` ;
   $app.appendChild(card);
   document.getElementById("restart").onclick = () => {
     STATE.round1 = { index: 0, answers: [] };
