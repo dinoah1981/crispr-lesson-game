@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CRISPR — Mechanism &amp; Consequence</title>
+  <meta name="description" content="A two-round classroom exercise on CRISPR/Cas9 and the bioethics of human gene editing." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <svg class="helix" viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <linearGradient id="strandA" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0%"  stop-color="#f6b73c" stop-opacity="0.95"/>
+          <stop offset="100%" stop-color="#f6b73c" stop-opacity="0.35"/>
+        </linearGradient>
+        <linearGradient id="strandB" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0%"  stop-color="#4cc9b0" stop-opacity="0.95"/>
+          <stop offset="100%" stop-color="#4cc9b0" stop-opacity="0.35"/>
+        </linearGradient>
+      </defs>
+      <path d="M40 0 C 80 30, 120 30, 160 60 S 80 90, 40 120 S 120 150, 160 180 S 80 210, 40 240"
+            fill="none" stroke="url(#strandA)" stroke-width="3" stroke-linecap="round"/>
+      <path d="M160 0 C 120 30, 80 30, 40 60 S 120 90, 160 120 S 80 150, 40 180 S 120 210, 160 240"
+            fill="none" stroke="url(#strandB)" stroke-width="3" stroke-linecap="round"/>
+      <g stroke-linecap="round" stroke-width="1.6" opacity="0.7">
+        <line x1="62"  y1="14"  x2="138" y2="14"  stroke="#f5efe2"/>
+        <line x1="80"  y1="32"  x2="120" y2="32"  stroke="#f5efe2"/>
+        <line x1="80"  y1="72"  x2="120" y2="72"  stroke="#f5efe2"/>
+        <line x1="62"  y1="92"  x2="138" y2="92"  stroke="#f5efe2"/>
+        <line x1="80"  y1="112" x2="120" y2="112" stroke="#f5efe2"/>
+        <line x1="80"  y1="152" x2="120" y2="152" stroke="#f5efe2"/>
+        <line x1="62"  y1="172" x2="138" y2="172" stroke="#f5efe2"/>
+        <line x1="80"  y1="192" x2="120" y2="192" stroke="#f5efe2"/>
+      </g>
+      <g>
+        <circle cx="62"  cy="14"  r="3" fill="#f6b73c"/>
+        <circle cx="138" cy="14"  r="3" fill="#4cc9b0"/>
+        <circle cx="80"  cy="32"  r="3" fill="#f6b73c"/>
+        <circle cx="120" cy="32"  r="3" fill="#4cc9b0"/>
+        <circle cx="80"  cy="72"  r="3" fill="#4cc9b0"/>
+        <circle cx="120" cy="72"  r="3" fill="#f6b73c"/>
+        <circle cx="62"  cy="92"  r="3" fill="#4cc9b0"/>
+        <circle cx="138" cy="92"  r="3" fill="#f6b73c"/>
+        <circle cx="80"  cy="112" r="3" fill="#f6b73c"/>
+        <circle cx="120" cy="112" r="3" fill="#4cc9b0"/>
+        <circle cx="80"  cy="152" r="3" fill="#4cc9b0"/>
+        <circle cx="120" cy="152" r="3" fill="#f6b73c"/>
+        <circle cx="62"  cy="172" r="3" fill="#f6b73c"/>
+        <circle cx="138" cy="172" r="3" fill="#4cc9b0"/>
+        <circle cx="80"  cy="192" r="3" fill="#f6b73c"/>
+        <circle cx="120" cy="192" r="3" fill="#4cc9b0"/>
+      </g>
+    </svg>
+
+    <div class="site-header__inner">
+      <span class="eyebrow">A two-round classroom exercise</span>
+      <h1 class="site-title">CRISPR — <em>mechanism</em><br/>&amp; consequence.</h1>
+      <p class="subtitle">First, you'll prove you understand how the cut actually happens. Then we hand you the technology — and see what you do with it.</p>
+
+      <nav id="progress-nav" class="progress" aria-label="Game progress">
+        <span class="progress__step" data-step="intro">Start</span>
+        <span class="progress__step" data-step="round1">Round 1 · Mechanism</span>
+        <span class="progress__step" data-step="round2">Round 2 · Design a child</span>
+        <span class="progress__step" data-step="end">Reflect</span>
+      </nav>
+    </div>
+  </header>
+
+  <main id="app"></main>
+
+  <footer>Built for in-class discussion. The genetics modeled here is intentionally simplified — the uncertainty is real.</footer>
+
+  <script src="game.js"></script>
+</body>
+</html>
